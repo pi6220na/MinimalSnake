@@ -10,7 +10,7 @@ import java.util.*;
 
 public class Snake extends TimerTask implements KeyListener {
 
-    boolean blkColor = true;
+    boolean binSwitch = true;
 
     int height = 300; int width = 400;   //pixels
     int squareSize = 25;    // was 50
@@ -71,17 +71,17 @@ public class Snake extends TimerTask implements KeyListener {
 
 
             g.clearRect(0, 0, width, height);    //Clear panel, fill with black
-            g.setColor(Color.BLACK);
+            g.setColor(Color.GRAY);
             g.fillRect(0, 0, width, height);
 
             if (gameOver > 6) {                 // If gameOver indicates game is won, display message
-                g.setColor(Color.GREEN);
+                g.setColor(Color.BLUE);
                 g.drawString(">-o~~~~~~~~~~~~~  SNAKE  ~~~~~~~~~~~~~o-<", 50, 50);    //  "art"
                 g.drawString("!!!! YOU WON !!! score: " + score, 100, 100);
             }
 
             else if (gameOver > 0 ) {          // If gameOver indicates game is over (won, lost, whatever) display score and countdown to next game
-                g.setColor(Color.GREEN);
+                g.setColor(Color.RED);
                 g.drawString(">-o~~~~~~~~~~~~~  SNAKE  ~~~~~~~~~~~~~o-<", 50, 50);
 
                 g.drawString("GAME OVER score: " + score, 120, 100);
@@ -94,14 +94,14 @@ public class Snake extends TimerTask implements KeyListener {
                 g.fillRect(kibble[0] * squareSize, kibble[1] * squareSize, squareSize, squareSize);
 
                 for (int[] square : snake) {
-                    if (blkColor) {
+                    if (binSwitch) {
                          g.setColor(Color.WHITE);
                          g.fillRect(square[0] * squareSize, square[1] * squareSize, squareSize, squareSize);
-                         blkColor = false;
+                         binSwitch = false;
                     } else {
-                        g.setColor(Color.GREEN);
+                        g.setColor(Color.BLACK);
                         g.fillRect(square[0] * squareSize, square[1] * squareSize, squareSize, squareSize);
-                        blkColor = true;
+                        binSwitch = true;
                     }
                 }
             }
@@ -146,7 +146,7 @@ public class Snake extends TimerTask implements KeyListener {
             headX = newHead[0];    //Convenience variables for new head x and y
             headY = newHead[1];
 
-            // if snake has run into wall, move snake to opposite side
+            // if snake has run into wall, move snake head to opposite side, direction stays the same
             if (headX < 0) {
                 headX = xSquares;
             }
