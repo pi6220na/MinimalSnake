@@ -8,6 +8,18 @@ import java.util.*;
 
 /** Created by Clara on 3/31/16 */
 
+
+/*
+    Modified by Jeremy 10/28/2016 from Clara's Github
+
+    changed some items color
+    changed size of snake block thus increasing screen size
+    implemented "warp" walls
+
+ */
+
+
+
 public class Snake extends TimerTask implements KeyListener {
 
     boolean binSwitch = true;
