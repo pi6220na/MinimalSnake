@@ -105,6 +105,8 @@ public class Snake extends TimerTask implements KeyListener {
                 g.setColor(Color.YELLOW);
                 g.fillRect(kibble[0] * squareSize, kibble[1] * squareSize, squareSize, squareSize);
 
+                binSwitch = true;
+
                 for (int[] square : snake) {
                     if (binSwitch) {
                          g.setColor(Color.WHITE);
