@@ -22,7 +22,7 @@ import java.util.*;
 
 public class Snake extends TimerTask implements KeyListener {
 
-    boolean binSwitch = true;
+    boolean binSwitch = true;       // used to color alternating snake blocks
 
     int height = 300; int width = 400;   //pixels
     int squareSize = 25;    // was 50
