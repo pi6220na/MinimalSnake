@@ -23,6 +23,7 @@ import java.util.*;
 public class Snake extends TimerTask implements KeyListener {
 
     boolean binSwitch = true;       // used to color alternating snake blocks
+    boolean madeHead = false;       // used to make oval head of snake
 
     int height = 300; int width = 400;   //pixels
     int squareSize = 25;    // was 50
@@ -106,16 +107,24 @@ public class Snake extends TimerTask implements KeyListener {
                 g.fillRect(kibble[0] * squareSize, kibble[1] * squareSize, squareSize, squareSize);
 
                 binSwitch = true;
+                madeHead = false;
 
+                // draw a white/black banded snake with a red head
                 for (int[] square : snake) {
-                    if (binSwitch) {
-                         g.setColor(Color.WHITE);
-                         g.fillRect(square[0] * squareSize, square[1] * squareSize, squareSize, squareSize);
-                         binSwitch = false;
+                    if (!madeHead) {
+                        g.setColor(Color.RED);
+                        g.fillOval(square[0] * squareSize, square[1] * squareSize, squareSize, squareSize);
+                        madeHead = true;
                     } else {
-                        g.setColor(Color.BLACK);
-                        g.fillRect(square[0] * squareSize, square[1] * squareSize, squareSize, squareSize);
-                        binSwitch = true;
+                        if (binSwitch) {
+                            g.setColor(Color.WHITE);
+                            g.fillRect(square[0] * squareSize, square[1] * squareSize, squareSize, squareSize);
+                            binSwitch = false;
+                        } else {
+                            g.setColor(Color.BLACK);
+                            g.fillRect(square[0] * squareSize, square[1] * squareSize, squareSize, squareSize);
+                            binSwitch = true;
+                        }
                     }
                 }
             }
